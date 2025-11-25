@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+header img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    margin-bottom: 1rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+section {
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: auto;
+}
+
+section h2 {
+    margin-bottom: 1rem;
+    color: #444;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+section p {
+    margin-bottom: 0.5rem;
+}
+
+section:nth-of-type(2) p {
+    font-style: italic;
+    color: #555;
+}
+
+strong {
+    color: #000;
+    font-weight: 600;
+}
+
+section ul {
+    margin-bottom: 1rem;
+    padding-left: 1.2rem;
+}
+
+section li {
+    margin-bottom: 0.5rem;
+    list-style-type: disc;
+}
+
+section li strong {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2rem;
+    list-style-type: "🎓";
+    padding-left: 0.5rem;
+}
+
+section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+section li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+section li strong {
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+section li a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+section li a:hover {
+    text-decoration: underline;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.skills span {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.skills span:hover {
+    background-color: #ccc;
+}
+
+footer {
+    background-color: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: #66b2ff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.btn-download {
+    display: inline-block;
+    background-color: #0077cc;
+    color: white;
+    padding: 0.6rem 1rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-download:hover {
+    background-color: #005fa3;
+}
+
+#toggle-theme {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#toggle-theme:hover {
+    background-color: #444;
+}
+
+body.dark {
+    background-color: #111;
+    color: #eee;
+}
+
+body.dark header {
+    background-color: #000;
+    color: #eee;
+}
+
+body.dark section li {
+    background-color: #1a1a1a;
+    border-color: #333;
+}
+
+body.dark .skills span {
+    background-color: #333;
+    color: #eee;
+}
+
+body.dark footer {
+    background-color: #000;
+    color: #aaa;
+}
+
+body.dark a {
+    color: #66b2ff;
+}
+
+a, .skills span,.btn-download, #toggle-theme {
+    transition: all 0.3s ease;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInMove 1s forwards;
+}
+
+@keyframes fadeInMove {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    header img {
+        width: 90px;
+        height: 90px;
+    }
+
+    section {
+        padding: 1.5rem 1rem;
+    }
+
+    .skills {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .skills span {
+        width: 100%;
+        text-align: center;
+    }
+
+    #toggle-theme {
+        top: auto;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
+
+
+

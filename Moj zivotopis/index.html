@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lukáš Remecký - Životopis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <img src="https://scontent.fbts8-1.fna.fbcdn.net/v/t1.6435-9/201417392_10219042325274413_1982409470163709603_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=JzTdc2M4yaQQ7kNvwG_RktH&_nc_oc=AdmgLyDabkSRQsOw0hkUq3jSU25YVmAcGhyJwZqqZRJX_afP9JXkbZBSv_tS2c9PEVc&_nc_zt=23&_nc_ht=scontent.fbts8-1.fna&_nc_gid=FllSmEQ_fe6QQKgyIYA9gw&oh=00_AfLeEEJpa4lh7FK4FjhmLjQy_j972xlbu8P-g7LWb71IoA&oe=685E96A2" alt="Moje foto">
+        <h1>Lukáš Remecký</h1>
+        <p>Junior programátor / Zameranie na Full-Stack</p>
+    </header>
+
+    <section class="fade-in">
+        <h2>📞 Kontakt</h2>
+        <p>Email : lukasremecky@gmail.com</p>
+        <p>Telefónne číslo : +421 949 825 277</p>
+        <p>Adresa : Zakarpatská 3, 071 01 Michalovce</p>
+    </section>
+
+    <section class="fade-in">
+        <h2>🧑‍💼 O mne</h2>
+        <p>Som motivovaný samouk a začínajúci programátor so silným záujmom o               Full-Stack developer.
+            Sústredím sa na budovanie pevných základov v jazykoch ako <strong>Python</strong>. Učím sa tvoriť
+            webové aplikácie s dôrazom na funkcionalitu, čistý kód a bezpečnosť.
+        </p>
+    </section>
+
+    <section class="fade-in">
+        <h2>💼 Pracovné skúsenosti</h2>
+        <p>Momentálne nemám formálne pracovné skúsenosti v oblasti IT, no ako <strong>samouk</strong> sa aktívne venujem
+        programovaniu, najmä vývoju webových aplikácií. Pracujem na vlastných 
+        projektoch, neustále sa vzdelávam a rozvíjam svoje schopnosti v jazykoch ako 
+        <strong>Python</strong>, <strong>JavaScript</strong>, <strong>HTML</strong> a <strong>CSS</strong>.
+        </p>
+    </section>
+
+    <section class="fade-in">
+        <h2>🎓 Vzdelanie</h2>
+        <ul>
+            <li>
+                <strong>CSOU sv. Cyrila a Metoda, Michalovce</strong><br />
+                Odbor: Kuchár (ukončené štúdium - Maturita) 
+            </li>
+        </ul>
+
+        <p>
+            Aj keď moje formálne vzdelanie nesúvisí priamo s IT, som motivovaný junior programátor s veľkým
+            záujmom o technológie. Zameriavam sa predovšetkým na Full-Stack vývoj, kde využívam svoje
+            logické myslenie a schopnosť učiť sa samostatne a rýchlo.
+        </p>
+    </section>
+
+    <section class="fade-in">
+        <h2>📁 Projekty</h2>
+            <ul>
+                <li>
+                    <strong>Todo aplikácia (Python + Flask)</strong><br />
+                    Jednoduchá webová aplikácia na správu úloh.<br />
+                    <a href="" target="_blank">Zdrojový kód na GitHub</a>
+                </li>
+
+                <li>
+                    <strong>Kalkulačka v JavaScripte</strong><br />
+                    Interaktívna kalkulačka pre webový prehliadač.<br />
+                    <a href="" target="_blank">Zdrojový kód na GitHub</a>
+                </li>
+            </ul>
+    </section>
+
+    <section class="fade-in">
+        <h2>🛠️ Zručnosti</h2>
+        <div class="skills">
+            <span>Python</span>
+            <span>JavaScript</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>SQL</span>
+            <span>Git</span>
+            <span>VS Code</span>
+        </div>
+    </section>
+
+    <footer>
+    &copy; 2025 Lukáš Remecký / Online životopis<br />
+    <a href="" target="_blank">Môj GitHub</a>
+    <br />
+
+    <a href="zivotopis-lukas-remecky.pdf" download class="btn-download">
+    📄 Stiahnuť životopis (PDF)
+    </a>
+
+    <button id="toggle-theme">🌙 Tmavý režim</button>
+</footer>
+
+    <script>
+        const toggleButton = document.getElementById('toggle-theme');
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+
+            // Zmeniť text tlačidla podľa režimu
+            if (document.body.classList.contains('dark')) {
+                toggleButton.textContent = '☀️ Svetlý režim';
+            } else {
+                toggleButton.textContent = '🌙 Tmavý režim';
+            }
+          });
+</script>
+
+</body>
+</html>
+
+
