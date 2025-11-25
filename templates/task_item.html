@@ -1,0 +1,25 @@
+<li class="{% if task.done %}done {% endif %}{{ task.priority }}">
+    <form method="POST" action="/toggle/{{ task.id }}" style="display: inline;">
+        <input type="checkbox" onchange="this.form.submit()" {% if task.done %}checked{% endif %}>
+    </form>
+    {{ task.text }} <br>
+    <small>Splniť do: {{ task.due_date_formatted }}</small><br>
+
+    {% if task.is_urgent and not task.done %}
+        <small class="urgent">⚠️ Termín sa blíži!</small>
+    {% endif %}
+
+    <small>Priorita:
+        {% if task.priority == 'high' %}🔴 Vysoká
+        {% elif task.priority == 'medium' %}🟡 Stredná
+        {% else %}🔵 Nízka
+        {% endif %}
+    </small>
+
+    <form method="GET" action="/edit/{{ task.id }}" style="display: inline;">
+        <button type="submit">✏️</button>
+    </form>
+    <form method="POST" action="/delete/{{ task.id }}" style="display:inline;">
+        <button type="submit">❌</button>
+    </form>
+</li>

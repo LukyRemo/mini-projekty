@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Moja ToDo Aplikácia</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.css">
+
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#3498db">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>📝 Moje úlohy</h1>
+
+        <div class="theme-toggle">
+            <label for="darkmode-toggle">
+                🌙 Tmavý režim
+                <input type="checkbox" id="darkmode-toggle">
+            </label>
+        </div>
+        
+        <form method="GET" action="/" class="filter-form">
+            <label for="filter-select">Filtrovať:</label>
+            <select id="filter-select" name="filter">
+                <option value="all" {% if filter == 'all' %}selected{% endif %}>Všetky</option>
+                <option value="done" {% if filter == 'done' %}selected{% endif %}>✅ Splnené</option>
+                <option value="not_done" {% if filter == 'not_done' %}selected{% endif %}>🕓 Nesplnené</option>
+                <option value="high" {% if filter == 'high' %}selected{% endif %}>🔴 Vysoká priorita</option>
+                <option value="medium" {% if filter == 'medium' %}selected{% endif %}>🟡 Stredná priorita</option>
+                <option value="low" {% if filter == 'low' %}selected{% endif %}>🔵 Nízka priorita</option>
+            </select>
+
+            <label for="sort-select">Triediť podľa:</label>
+            <select id="sort-select" name="sort">
+                <option value="auto" {% if sort == 'auto'  %}selected{% endif %}>Automaticky (termín + priorita)</option>
+                <option value="manual" {% if sort == 'manual' %}selected{% endif %}>Manuálne (podľa zadanie)</option>
+            </select>
+
+            <button type="submit">Použiť</button>
+        </form>
+
+        <form method="POST" action="/add">
+            <input type="text" name="task" placeholder="Zadaj úlohu" required>
+            <input type="text" id="add-due-date" name="due_date" placeholder="Vyber Dátum a čas" required>
+
+            <select name="priority" required>
+                <option value="low">🔵 Nízka</option>
+                <option value="medium">🟡 Stredná</option>
+                <option value="high">🔴 Vysoká</option>
+            </select>
+
+            <button type="submit">Pridať</button>
+    
+        </form>
+
+            {% if tasks_overdue %}
+                <h2 style="color: red;">❗ Po termíne</h2>
+                <ul>
+                    {% for task in tasks_overdue %}
+                        {% include "task_item.html" %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if tasks_today %}
+                <h2 style="color: #2c3e50;">📅 Dnes</h2>
+                <ul>
+                    {% for task in tasks_today %}
+                        {% include "task_item.html" %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if tasks_tomorrow %}
+                <h2 style="color: #2c3e50;">📆 Zajtra</h2>
+                <ul>
+                    {% for task in tasks_tomorrow %}
+                        {% include "task_item.html" %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if tasks_later %}
+                <h2 style="color: #2c3e50;">📂 Neskôr</h2>
+                <ul>
+                    {% for task in tasks_later %}
+                        {% include "task_item.html" %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.min.js"></script>
+
+    <script>
+        flatpickr("#add-due-date", {
+                 enableTime: true,
+            dateFormat: "d.m.Y H:i",
+            time_24hr: true,
+            allowInput: true,
+            locale: {
+                firstDayOfWeek: 1
+            },
+            plugins: [
+                new confirmDatePlugin({
+                    confirmText: "OK",
+                    showAlways: false,
+                    theme: "light"
+                })
+            ]
+        });
+    </script>
+
+<script>
+    const themeToggle = document.getElementById("darkmode-toggle");
+
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        themeToggle.checked = true;
+    }
+
+    themeToggle.addEventListener("change", () => {
+        const isDark = themeToggle.checked;
+
+        if (isDark) {
+            document.body.classList.add("dark-mode");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.body.classList.remove("dark-mode");
+            localStorage.setItem("theme", "light");
+        }      
+    });
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(function(registration) {
+        console.log('✅ ServiceWorker registrovaný:', registration);
+      }).catch(function(error) {
+        console.error('❌ Chyba pri registrácii ServiceWorker:', error);
+      });
+  }
+</script>
+
+</body>
+</html>

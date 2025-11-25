@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upraviť úlohu</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Upraviť úlohu</h1>
+    
+        <form method="POST" class="edit-form">
+
+            <label for="edit-task">Úloha:</label>
+            <input type="text" id="edit-task" name="task" value="{{ task.text }}" required>
+
+            <label for="edit-due-date">Dátum a čas:</label>
+            <input type="text" id="edit-due-date" name="due_date" value="{{ task.due_date }}" required>
+        
+            <div class="form-buttons">
+                <button type="submit">✅ Potvrdiť</button>
+                <a href="{{ url_for('home') }}" class="cancel-button">❌ Zrušiť</a>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.min.js"></script>
+
+    <script>
+        flatpickr("#edit-due-date", {
+            enableTime: true,
+            dateFormat: "d.m.Y H:i",
+            time_24hr: true,
+            allowInput: true,
+            locale: {
+                firstDayOfWeek: 1
+            },
+            plugins: [
+                new confirmDatePlugin({
+                    confirmText: "OK",
+                    showAlways: false,
+                    theme: "light"
+                })
+            ]
+        })
+    </script>
+     
+</body>
+</html>
